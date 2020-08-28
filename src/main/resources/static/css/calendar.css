@@ -1,0 +1,23 @@
+/* 定位i标签在input标签内 */
+.daterange i {
+    position: relative;
+    /*bottom: 10px;*/
+    /*right: 14px;*/
+    width: 50%;
+    height: 50%;
+    top: auto;
+    cursor: pointer;
+}
+.daterange {
+    z-index: 1;
+    height: 50%;
+    width: 50%;
+    position: relative;
+}
+/* daterange i end */
+.calendar{
+    position: relative;
+    background-color: transparent;
+    width: 1000px;
+    height: 500px;
+}

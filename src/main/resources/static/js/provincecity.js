@@ -1,0 +1,709 @@
+var provinces = ['shanghai', 'hebei', 'shanxi', 'neimenggu', 'liaoning', 'jilin', 'heilongjiang', 'jiangsu', 'zhejiang', 'anhui', 'fujian', 'jiangxi', 'shandong', 'henan', 'hubei', 'hunan', 'guangdong', 'guangxi', 'hainan', 'sichuan', 'guizhou', 'yunnan', 'xizang', 'shanxi1', 'gansu', 'qinghai', 'ningxia', 'xinjiang', 'beijing', 'tianjin', 'chongqing', 'xianggang', 'aomen'];
+var provincesText = ['上海市', '河北省', '山西省', '内蒙古自治区', '辽宁省', '吉林省', '黑龙江省', '江苏省', '浙江省', '安徽省', '福建省', '江西省', '山东省', '河南省', '湖北省', '湖南省', '广东省', '广西壮族自治区', '海南省', '四川省', '贵州省', '云南省', '西藏省', '陕西省', '甘肃省', '青海省', '宁夏回族自治区', '新疆维吾尔自治区', '北京市', '天津市', '重庆市', '香港', '澳门'];
+// 全国省份数据
+
+var toolTipData = [{
+    "provinceName": "北京市",
+    "provinceKey": 110000,
+    "alarmCount": 0,
+    "sortLineCount": 0,
+    "stationCount": 0
+}, {
+    "provinceName": "天津市",
+    "provinceKey": 120000,
+    "alarmCount": 0,
+    "sortLineCount": 0,
+    "stationCount": 0
+}, {
+    "provinceName": "河北省",
+    "provinceKey": 130000,
+    "alarmCount": 0,
+    "sortLineCount": 0,
+    "stationCount": 0
+}, {
+    "provinceName": "山西省",
+    "provinceKey": 140000,
+    "alarmCount": 0,
+    "sortLineCount": 0,
+    "stationCount": 0
+}, {
+    "provinceName": "内蒙古自治区",
+    "provinceKey": 150000,
+    "alarmCount": 0,
+    "sortLineCount": 0,
+    "stationCount": 0
+}, {
+    "provinceName": "辽宁省",
+    "provinceKey": 210000,
+    "alarmCount": 0,
+    "sortLineCount": 0,
+    "stationCount": 0
+}, {
+    "provinceName": "吉林省",
+    "provinceKey": 220000,
+    "alarmCount": 0,
+    "sortLineCount": 0,
+    "stationCount": 0
+}, {
+    "provinceName": "黑龙江省",
+    "provinceKey": 230000,
+    "alarmCount": 0,
+    "sortLineCount": 0,
+    "stationCount": 0
+}, {
+    "provinceName": "上海市",
+    "provinceKey": 310000,
+    "alarmCount": 0,
+    "sortLineCount": 0,
+    "stationCount": 0
+}, {
+    "provinceName": "江苏省",
+    "provinceKey": 320000,
+    "alarmCount": 0,
+    "sortLineCount": 0,
+    "stationCount": 0
+}, {
+    "provinceName": "浙江省",
+    "provinceKey": 330000,
+    "alarmCount": 0,
+    "sortLineCount": 0,
+    "stationCount": 0
+}, {
+    "provinceName": "安徽省",
+    "provinceKey": 340000,
+    "alarmCount": 0,
+    "sortLineCount": 0,
+    "stationCount": 0
+}, {
+    "provinceName": "福建省",
+    "provinceKey": 350000,
+    "alarmCount": 0,
+    "sortLineCount": 0,
+    "stationCount": 0
+}, {
+    "provinceName": "江西省",
+    "provinceKey": 360000,
+    "alarmCount": 0,
+    "sortLineCount": 0,
+    "stationCount": 0
+}, {
+    "provinceName": "山东省",
+    "provinceKey": 370000,
+    "alarmCount": 0,
+    "sortLineCount": 0,
+    "stationCount": 0
+}, {
+    "provinceName": "河南省",
+    "provinceKey": 410000,
+    "alarmCount": 0,
+    "sortLineCount": 0,
+    "stationCount": 0
+}, {
+    "provinceName": "湖北省",
+    "provinceKey": 420000,
+    "alarmCount": 0,
+    "sortLineCount": 0,
+    "stationCount": 0
+}, {
+    "provinceName": "湖南省",
+    "provinceKey": 430000,
+    "alarmCount": 0,
+    "sortLineCount": 0,
+    "stationCount": 0
+}, {
+    "provinceName": "广东省",
+    "provinceKey": 440000,
+    "alarmCount": 0,
+    "sortLineCount": 0,
+    "stationCount": 0
+}, {
+    "provinceName": "广西壮族自治区",
+    "provinceKey": 450000,
+    "alarmCount": 0,
+    "sortLineCount": 0,
+    "stationCount": 0
+}, {
+    "provinceName": "海南省",
+    "provinceKey": 460000,
+    "alarmCount": 0,
+    "totalPrice": 617514,
+    "sortLineCount": 0,
+    "stationCount": 0
+}, {
+    "provinceName": "重庆市",
+    "provinceKey": 500000,
+    "alarmCount": 0,
+    "sortLineCount": 0,
+    "stationCount": 0
+}, {
+    "provinceName": "四川省",
+    "provinceKey": 510000,
+    "alarmCount": 0,
+    "sortLineCount": 0,
+    "stationCount": 0
+}, {
+    "provinceName": "贵州省",
+    "provinceKey": 520000,
+    "alarmCount": 0,
+    "sortLineCount": 0,
+    "stationCount": 0
+}, {
+    "provinceName": "云南省",
+    "provinceKey": 530000,
+    "alarmCount": 0,
+    "sortLineCount": 0,
+    "stationCount": 0
+}, {
+    // "provinceName": "西藏省",
+    "provinceKey": 540000,
+    "alarmCount": 0,
+    "sortLineCount": 0,
+    "stationCount": 0
+}, {
+    "provinceName": "陕西省",
+    "provinceKey": 610000,
+    "alarmCount": 0,
+    "sortLineCount": 0,
+    "stationCount": 0
+}, {
+    // "provinceName": "甘肃省",
+    "provinceKey": 620000,
+    "alarmCount": 0,
+    "sortLineCount": 0,
+    "stationCount": 0
+},
+    {
+        // "provinceName": "青海省",
+        // "provinceKey": 630000,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    },
+    {
+        "provinceName": "宁夏回族自治区",
+        "provinceKey": 640000,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "provinceName": "新疆维吾尔自治区",
+        "provinceKey": 650000,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }];
+var provinceData = [{
+    "cityName": "昌吉回族自治州",
+    "cityKey": 652300,
+    "alarmCount": 0,
+    "sortLineCount": 0,
+    "stationCount": 0
+},
+    {
+        "cityName": "苏州市",
+        "cityKey": 320600,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }
+    , {
+        "cityName": "南通市",
+        "cityKey": 320700,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "淮安市",
+        "cityKey": 320300,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "无锡市",
+        "cityKey": 320300,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "泰州市",
+        "cityKey": 321300,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "南京市",
+        "cityKey": 320200,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "常州市",
+        "cityKey": 320500,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "石家庄市",
+        "cityKey": 130200,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "唐山市",
+        "cityKey": 130300,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "保定市",
+        "cityKey": 130700,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    },
+    //     {
+    //     "provinceName": null,
+    //     "provinceKey": null,
+    //     "cityName": "null",
+    //     "cityKey": 130400,
+    //     // "alarmCount": 2,
+    //     "totalPrice": 5533.4,
+    //     "sortLineCount": 255,
+    //     "stationCount": 0
+    // }
+    {
+        "cityName": "南宁市",
+        "cityKey": 450200,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "柳州市",
+        "cityKey": 450300,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "郑州市",
+        "cityKey": 410200,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "周口市",
+        "cityKey": 411600,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "南阳市",
+        "cityKey": 411400,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "新乡市",
+        "cityKey": 410800,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "佛山市",
+        "cityKey": 440700,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "广州市",
+        "cityKey": 440200,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "深圳市",
+        "cityKey": 440400,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "东莞市",
+        "cityKey": 442000,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    },
+    {
+        "cityName": "null",
+        "cityKey": 440500,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    },
+    {
+        "cityName": "黔南布依族苗族自治州",
+        "cityKey": 522700,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "昆明市",
+        "cityKey": 530300,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "长沙市",
+        "cityKey": 430200,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "衡阳市",
+        "cityKey": 430500,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "常德市",
+        "cityKey": 430800,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "济南市",
+        "cityKey": 370200,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "青岛市",
+        "cityKey": 370300,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "临沂市",
+        "cityKey": 371400,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "福州市",
+        "cityKey": 350200,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "泉州市",
+        "cityKey": 350600,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "上海市",
+        "cityKey": 310101,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "北京市",
+        "cityKey": 110101,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "盘锦市",
+        "cityKey": 211200,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "成都市",
+        "cityKey": 510300,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "包头市",
+        "cityKey": 150300,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "芜湖市",
+        "cityKey": 340300,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "合肥市",
+        "cityKey": 340200,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "蚌埠市",
+        "cityKey": 340400,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "西安市",
+        "cityKey": 610200,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "南昌市",
+        "cityKey": 360200,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "重庆市",
+        "cityKey": 500101,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "天津市",
+        "cityKey": 120101,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "金华市",
+        "cityKey": 330800,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "台州市",
+        "cityKey": 331100,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "温州市",
+        "cityKey": 330400,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "杭州市",
+        "cityKey": 330200,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }
+    , {
+        "cityName": "三明市",
+        "cityKey": 350400,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }
+    , {
+        "cityName": "厦门市",
+        "cityKey": 350200,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }
+    , {
+        "cityName": "烟台市",
+        "cityKey": 370600,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }
+    , {
+        "cityName": "呼和浩特市",
+        "cityKey": 150100,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "沧州市",
+        "cityKey": 130900,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "邯郸市",
+        "cityKey": 130400,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "徐州市",
+        "cityKey": 320300,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "揭阳市",
+        "cityKey": 445200,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "江门市",
+        "cityKey": 440700,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "潮州市",
+        "cityKey": 445100,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "安庆市",
+        "cityKey": 340800,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "嘉兴市",
+        "cityKey": 330400,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "宁波市",
+        "cityKey": 330200,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "绍兴市",
+        "cityKey": 330600,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }
+    , {
+        "cityName": "济宁市",
+        "cityKey": 370800,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }
+    , {
+        "cityName": "沈阳市",
+        "cityKey": 210100,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }
+    , {
+        "cityName": "大连市",
+        "cityKey": 210100,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }
+    , {
+        "cityName": "襄阳市",
+        "cityKey": 420600,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }
+    , {
+        "cityName": "荆州市",
+        "cityKey": 421000,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "武汉市",
+        "cityKey": 420100,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }
+    , {
+        "cityName": "哈尔滨市",
+        "cityKey": 230100,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }
+    , {
+        "cityName": "长春市",
+        "cityKey": 220100,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "晋城市",
+        "cityKey": 140500,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "太原市",
+        "cityKey": 140100,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "海口市",
+        "cityKey": 460100,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }
+    , {
+        "cityName": "大理白族自治州",
+        "cityKey": 532900,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }, {
+        "cityName": "银川市",
+        "cityKey": 640100,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }
+    , {
+        "cityName": "青浦区",
+        "cityKey": 310118,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }
+    , {
+        "cityName": "浦东新区",
+        "cityKey": 310115,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }
+    , {
+        "cityName": "朝阳区",
+        "cityKey": 110105,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }
+    , {
+        "cityName": "渝北区",
+        "cityKey": 500112,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }
+    , {
+        "cityName": "东丽区",
+        "cityKey": 120110,
+        "alarmCount": 0,
+        "sortLineCount": 0,
+        "stationCount": 0
+    }
+];
+
