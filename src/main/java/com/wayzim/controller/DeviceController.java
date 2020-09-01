@@ -28,9 +28,9 @@ public class DeviceController {
      * @return
      */
     @RequestMapping("/queryDeviceType")
-    public Result queryDeviceType(@RequestParam("type") Integer type){
+    public Result<Long> queryDeviceType(@RequestParam("type") Integer type){
         Long count = deviceServiceI.queryDeviceType(type);
-        return new Result(ResultCode.SUCCESS,count);
+        return new Result<>(ResultCode.SUCCESS,count);
     }
 
     /**
@@ -39,9 +39,9 @@ public class DeviceController {
      * @return
      */
     @RequestMapping("/queryDeviceState")
-    public Result queryDeviceState(@RequestParam("stateType") Integer stateType){
+    public Result<Long> queryDeviceState(@RequestParam("stateType") Integer stateType){
         Long count = deviceServiceI.queryDeviceState(stateType);
-        return new Result(ResultCode.SUCCESS,count);
+        return new Result<>(ResultCode.SUCCESS,count);
     }
 
     /**
@@ -49,9 +49,9 @@ public class DeviceController {
      * @return
      */
     @RequestMapping(value = "/timeCount",method = RequestMethod.POST)
-    public Result findTime(){
+    public Result<List<Long>> findTime(){
         List<Long> list = deviceServiceI.findTime();
-        return new Result(ResultCode.SUCCESS,list);
+        return new Result<>(ResultCode.SUCCESS,list);
     }
 
     /**
@@ -74,23 +74,23 @@ public class DeviceController {
      * @throws ParseException
      */
     @RequestMapping(value = "/queryStateByDistrictTime",method = RequestMethod.GET)
-    public Result queryStateByDistrictTime(@RequestParam(value = "type",required = false) Integer stateType, @RequestParam(value = "startTime",required = false)
+    public Result<List<List<Object>>> queryStateByDistrictTime(@RequestParam(value = "type",required = false) Integer stateType, @RequestParam(value = "startTime",required = false)
             String startTime,@RequestParam(value = "endTime",required =false) String endTime) throws ParseException {
         if (startTime == null && endTime == null) {
             List<List<Object>> list = deviceServiceI.queryStateByDistrict(stateType);
-            return new Result(ResultCode.SUCCESS,list);
+            return new Result<>(ResultCode.SUCCESS,list);
         } else {
             List<List<Object>> list = deviceServiceI.queryStateByDistrictTime(stateType, getDate(startTime), getDate(endTime));
-            return new Result(ResultCode.SUCCESS,list);
+            return new Result<>(ResultCode.SUCCESS,list);
         }
     }
 
 
     @RequestMapping(value = "/queryStationInfo")
-    public Result queryStationInfo(@RequestParam("type") Integer type,@RequestParam("name") String name,
+    public Result<List<List<Object>>> queryStationInfo(@RequestParam("type") Integer type,@RequestParam("name") String name,
                                                @RequestParam("startTime") Date startTime,@RequestParam("endTime") Date endTime){
         List<List<Object>> list = deviceServiceI.queryStationInfo(type, name, startTime, endTime);
-        return new Result(ResultCode.SUCCESS,list);
+        return new Result<>(ResultCode.SUCCESS,list);
     }
     /**
      * 字符串转换时间工具

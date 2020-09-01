@@ -8,7 +8,7 @@ import lombok.Data;
  * @description
  */
 @Data
-public class Result {
+public class Result<T> {
 
     /**
      * 操作是否成功
@@ -28,7 +28,7 @@ public class Result {
     /**
      * 数据
      */
-    private Object data;
+    private T data;
 
     public Result(ResultCode code){
         this.success=code.success;
@@ -36,18 +36,14 @@ public class Result {
         this.message=code.message;
     }
 
-    public Result(ResultCode code,Object data){
+    public Result(ResultCode code,T data){
         this.success=code.success;
         this.code=code.code;
         this.message=code.message;
         this.data=data;
     }
 
-    public static Result SUCCESS(){
-        return new Result(ResultCode.SUCCESS);
-    }
-
-    public static Result FAIL(){
-        return new Result(ResultCode.FAIL);
+    public static <T> Result<T> SUCCESS(T data){
+        return new Result<>(ResultCode.SUCCESS,data);
     }
 }

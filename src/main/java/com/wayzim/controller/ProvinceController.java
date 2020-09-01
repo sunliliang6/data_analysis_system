@@ -30,9 +30,9 @@ public class ProvinceController {
      * @return map集合
      */
     @RequestMapping(value = "/queryAlarmByProvince",method = RequestMethod.POST)
-    public Result queryAlarmByProvince() {
+    public Result<List<Map<String, Long>>> queryAlarmByProvince() {
         List<Map<String, Long>> list = stationServiceI.queryAlarmByProvince();
-        return new Result(ResultCode.SUCCESS,list);
+        return new Result<>(ResultCode.SUCCESS,list);
     }
 
     /**
@@ -40,8 +40,8 @@ public class ProvinceController {
      * @return
      */
     @RequestMapping(value = "/queryProvinceInfo",method = RequestMethod.GET)
-    public Result queryProvinceInfo() {
+    public Result<List<List<Object>>> queryProvinceInfo() {
         List<List<Object>> list = stationServiceI.queryProvinceInfo();
-        return new Result(ResultCode.SUCCESS,list);
+        return new Result<>(ResultCode.SUCCESS,list);
     }
 }

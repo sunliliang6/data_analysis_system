@@ -24,9 +24,9 @@ public class CityController {
      * @return
      */
     @RequestMapping(value = "/queryAlarmCity",method = RequestMethod.GET)
-    public Result queryAlarmCity() {
+    public Result<List<Map<String, Long>>> queryAlarmCity() {
         List<Map<String, Long>> list = stationServiceI.queryAlarmCity();
-        return new Result(ResultCode.SUCCESS,list);
+        return new Result<>(ResultCode.SUCCESS,list);
     }
 
     /**
@@ -34,9 +34,9 @@ public class CityController {
      * @return
      */
     @RequestMapping(value = "/queryZCityAlarm",method = RequestMethod.POST)
-    public Result queryZCityAlarm(){
+    public Result<List<Map<String, Long>>> queryZCityAlarm(){
         List<Map<String, Long>> list = stationServiceI.queryZCityAlarm();
-        return new Result(ResultCode.SUCCESS,list);
+        return new Result<>(ResultCode.SUCCESS,list);
     }
 
     /**
@@ -45,9 +45,9 @@ public class CityController {
      * @return
      */
     @RequestMapping(value = "/queryCityInfo",method = RequestMethod.POST)
-    public Result queryCityInfo(@RequestParam(value = "province") String province){
+    public Result<List<List<Object>>> queryCityInfo(@RequestParam(value = "province") String province){
         List<List<Object>> list = stationServiceI.queryCityInfo(province);
-        return new Result(ResultCode.SUCCESS,list);
+        return new Result<>(ResultCode.SUCCESS,list);
     }
 
     /**
@@ -56,9 +56,9 @@ public class CityController {
      * @return
      */
     @RequestMapping("/queryStationInfo")
-    public Result queryStationCity(@RequestParam(value = "city") String city){
+    public Result<List<List<Object>>> queryStationCity(@RequestParam(value = "city") String city){
         List<List<Object>> list = stationServiceI.queryStationCity(city);
-        return new Result(ResultCode.SUCCESS,list);
+        return new Result<>(ResultCode.SUCCESS,list);
     }
 
     /**
@@ -67,8 +67,8 @@ public class CityController {
      * @return
      */
     @RequestMapping("/queryStationDistrict")
-    public Result queryStationDistrict(@RequestParam(value = "district") String district){
+    public Result<List<List<Object>>> queryStationDistrict(@RequestParam(value = "district") String district){
         List<List<Object>> list = stationServiceI.queryStationDistrict(district);
-        return new Result(ResultCode.SUCCESS,list);
+        return new Result<>(ResultCode.SUCCESS,list);
     }
 }
